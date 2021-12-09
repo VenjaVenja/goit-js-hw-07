@@ -26,24 +26,29 @@ galleryEl.addEventListener('click', onImageClick)
 function onImageClick (event){
     event.preventDefault();
 
-const isImage = event.target.classList.contains('gallery__image');
-    if (!isImage) {
-    return
-};
+    if (!event.target.classList.contains('gallery__image')) {
+    return;
+}
 
 const modalWindow = basicLightbox.create(
     `<div class='modal'>
  <img src='${event.target.dataset.source}' width='800' height='600'>
-</div>`);
+</div>`, {
+    onShow: (modalWindow)=>{
+        window.addEventListener('keydown', onKeyboardEscClick);
+        console.log('onShow', modalWindow)
+    },
+    onClose: (modalWindow)=>{
+        window.removeEventListener('keydown', modalWindow);
+        console.log('onClose', modalWindow)
+    }
+})
 
 modalWindow.show()
-
-document.addEventListener('keydown', onKeyboardEscClick);
-
 function onKeyboardEscClick (event) {
 if(event.code === 'Escape'){
     modalWindow.close();
-    document.removeEventListener('keydown', onKeyboardEscClick)
+    window.removeEventListener('keydown', onKeyboardEscClick)
 }
 }
 };
