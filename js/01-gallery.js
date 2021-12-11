@@ -39,7 +39,7 @@ const modalWindow = basicLightbox.create(
         // console.log('onShow', modalWindow)
     },
     onClose: (modalWindow)=>{
-        window.removeEventListener('keydown', modalWindow);
+        window.removeEventListener('keydown', onKeyboardEscClick);
         // console.log('onClose', modalWindow)
     }
 })
@@ -47,7 +47,7 @@ modalWindow.show()
 function onKeyboardEscClick (event) {
 if(event.code === 'Escape'){
     modalWindow.close();
-    window.removeEventListener('keydown', onKeyboardEscClick);
+    // window.removeEventListener('keydown', onKeyboardEscClick);
     };
     };
 };
