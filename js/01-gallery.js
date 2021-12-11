@@ -36,19 +36,18 @@ const modalWindow = basicLightbox.create(
 </div>`, {
     onShow: (modalWindow)=>{
         window.addEventListener('keydown', onKeyboardEscClick);
-        console.log('onShow', modalWindow)
+        // console.log('onShow', modalWindow)
     },
     onClose: (modalWindow)=>{
         window.removeEventListener('keydown', modalWindow);
-        console.log('onClose', modalWindow)
+        // console.log('onClose', modalWindow)
     }
 })
-
 modalWindow.show()
 function onKeyboardEscClick (event) {
 if(event.code === 'Escape'){
     modalWindow.close();
-    window.removeEventListener('keydown', onKeyboardEscClick)
-}
-}
+    window.removeEventListener('keydown', onKeyboardEscClick);
+    };
+    };
 };
