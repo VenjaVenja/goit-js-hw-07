@@ -34,20 +34,17 @@ const modalWindow = basicLightbox.create(
     `<div class='modal'>
  <img src='${event.target.dataset.source}' width='800' height='600'>
 </div>`, {
-    onShow: (modalWindow)=>{
+    onShow: ()=>{
         window.addEventListener('keydown', onKeyboardEscClick);
-        // console.log('onShow', modalWindow)
     },
-    onClose: (modalWindow)=>{
+    onClose: ()=>{
         window.removeEventListener('keydown', onKeyboardEscClick);
-        // console.log('onClose', modalWindow)
     }
 })
 modalWindow.show()
 function onKeyboardEscClick (event) {
 if(event.code === 'Escape'){
     modalWindow.close();
-    // window.removeEventListener('keydown', onKeyboardEscClick);
     };
     };
 };
